@@ -1,0 +1,16 @@
+{% extends 'base_template.html' %}
+
+{% block 'title' %}Agricultural plateform Blog{% endblock %}
+
+{% block 'content' %}
+
+    <h1>Agricultural plateform information Blog</h1>
+    <ul>
+        {% for post in blog_posts %}
+            <a href="{% url 'blog:post_view' post.id %}">
+                <li>{{ post.title }} (<em>{{ post.pub_date }}</em>)</li>
+            </a>
+            {% endfor %}
+        </ul>
+
+{% endblock %}

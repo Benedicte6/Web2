@@ -1,0 +1,17 @@
+{% extends 'base_template.html' %}
+
+{% block 'title' %}{{ post.title }}{% endblock %}
+
+{% block 'content' %}
+
+    <a href="{% url 'blog:home' %}">Home</a>
+    
+    <h1>{{ post.title }}</h1>
+    
+    <p>Published: <em>{{ post.pub_date }}</em></p>
+    
+    <p>{{ post.content }}</p>
+    
+    <p><em>{{ post.num_views }} views</em></p>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block 'content' %}
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/Trends/">Tendances agricoles</a></li>
+                <li><a href="/best_pratices/">Meilleures pratiques</a></li>
+                <li><a href="/new_technologies/">Nouvelles technologies</a></li>
+                <li><a href="/key_events/">Evénements clés</a></li>
+                <li><a href="/about/">All informations about us</a></li>
+            </ul>
+        </nav>
+        <h1>Bienvenue sur Agricultural Information Platform</h1>
+        <p>Obtenez les dernières informations sur les tendances agricoles, les meilleures pratiques,
+        les nouvelles technologies, les réglementations et les événements clés dans le domaine de l'agronomie.</p>
+    </header>
+
+    <div>
+        <img src="{% static 'pages/img/accueil3.jpg' %}">
+        <img src="{% static 'pages/img/accueil1.jpg' %}">
+        <img src="{% static 'pages/img/accueil2.jpg' %}">
+    </div>
+     
+    
+    {% endblock %}

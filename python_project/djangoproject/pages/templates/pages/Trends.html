@@ -1,0 +1,37 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block 'content' %}
+    <header>
+        <h1>Agricultural Trends</h1>
+    </header>
+    <nav>
+        <a href="/">Home</a>
+    </nav>
+
+    <div>
+        <img src="{% static 'pages/img/tends.jpg' %}">
+        <img src="{% static 'pages/img/trends.jpg' %}">
+    </div>
+
+    <main>
+        <p>Explore the latest agricultural trends here.</p>
+        
+        <h2>Dernières tendances agricoles</h2>
+        
+        <p>Les tendances agricoles actuelles mettent en avant l'importance croissante de l'agriculture numérique. Les technologies telles que l'Internet des objets (IoT), l'intelligence artificielle (IA) et la blockchain transforment la manière dont les agriculteurs gèrent leurs exploitations et prennent des décisions.</p>
+        
+        <p>L'agriculture de précision continue de se développer, offrant aux agriculteurs des outils sophistiqués pour surveiller et optimiser la santé des cultures, réduire les intrants et améliorer les rendements de manière durable.</p>
+        
+        <p>La durabilité est au cœur des tendances actuelles, avec une attention particulière portée à la régénération des sols, à la réduction de l'empreinte carbone et à la préservation de la biodiversité pour assurer la pérennité des systèmes agricoles.</p>
+        
+        <p>Les modèles d'agriculture circulaire gagnent en popularité, promouvant une approche holistique de la production alimentaire qui vise à réduire les déchets, à valoriser les sous-produits et à créer des boucles de production plus durables.</p>
+        
+        <p>La diversification des cultures et des systèmes agricoles est également une tendance notable, avec une plus grande adoption de cultures alternatives, de mélanges de cultures et d'agroforesterie pour améliorer la résilience des exploitations et favoriser une utilisation plus efficace des terres.</p>
+        
+        <p>Enfin, l'accent mis sur la transparence et la traçabilité alimentaire est de plus en plus marqué, les consommateurs cherchant des informations sur l'origine des produits, les pratiques agricoles utilisées et leur impact environnemental pour prendre des décisions d'achat éclairées.</p>
+        
+    </main>
+    <footer>
+        <p>&copy; 2024-2023 Agricultural Information Platform</p>
+    </footer>
+    {% endblock %}
