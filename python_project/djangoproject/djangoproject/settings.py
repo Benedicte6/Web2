@@ -82,8 +82,8 @@ DATABASES = {
     'default': {
         'ENGINE' : 'django.db.backends.mysql',
         'NAME' : 'agricultural_data',
-        'USER' : 'bbn_admin',
-        'PASSWORD': DATABASE_PASSWORD,
+        'USER' : 'bb_admin',
+        'PASSWORD': 'Pass123',
         'HOST' : 'localhost',
         'PORT' : '3306',
     }

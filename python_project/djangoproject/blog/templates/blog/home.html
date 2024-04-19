@@ -5,12 +5,26 @@
 {% block 'content' %}
 
     <h1>Agricultural plateform information Blog</h1>
-    <ul>
-        {% for post in blog_posts %}
-            <a href="{% url 'blog:post_view' post.id %}">
+        <ul>
+            {% for post in blog_posts %}
+            <a href="{{ post.get_absolute_url }}">
                 <li>{{ post.title }} (<em>{{ post.pub_date }}</em>)</li>
+                {% if post.is_published %}
+                    <a href="{% url 'blog:post-change' post.id %}">
+                        <button>Edit</button>
+                    </a>
+                    <a href="{% url 'blog:post-delete' post.id %}">
+                        <button>Delete</button>
+                    </a>
+             {% endif %}
+            
             </a>
             {% endfor %}
         </ul>
+
+        <!-- <a href="{% url 'blog:post-add' %}">Create a New Post</a> -->
+        <a href="{% url 'blog:post-add' %}">
+            <button>Add a New one</button>
+        </a>
 
 {% endblock %}

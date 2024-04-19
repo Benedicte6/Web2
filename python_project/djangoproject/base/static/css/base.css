@@ -89,6 +89,21 @@ section {
     border-radius: 5px;
 }
 
+/* Style des boutons */
+button, input[type="button"], input[type="submit"] {
+    background-color: #2a6105;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin: 2px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    
+}
+
 
 
 

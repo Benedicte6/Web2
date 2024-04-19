@@ -1,0 +1,22 @@
+{% extends 'base_template.html' %}
+
+{% block 'title' %}{{ post.title }}{% endblock %}
+
+{% block 'content' %}
+    <h1>{{ post.title }}</h1>
+    <p>
+        <a href="{% url 'blog:post-change' post.id %}">
+            <button>Edit</button></a>
+        <a href="{% url 'blog:post-delete' post.id %}">
+            <button>Delete</button></a>
+    </p>
+    {% if post.is_published %}
+        <p>Published: <em>{{ post.pub_date }}</em></p>
+    {% else %}
+        
+        <form action="{% url 'blog:post-publish' post.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Publish">
+        </form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base_template.html' %}
+
+{% block 'title' %}Delete Post: {{ post.title }}{% endblock %}
+
+{% block 'content' %}
+
+    <a href="{% url 'blog:home' %}">Home</a>
+    <h1>Delete Post: {{ post.title }}</h1>
+    <form action="{% url 'blog:post-delete' post.id %}" method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete this post?</p>
+        <input type="submit" value="Yes">
+        <a href="{{ post.get_absolute_url }}">
+            <input type="button" value="Cancel"></a>
+    </form>
+{% endblock %}
