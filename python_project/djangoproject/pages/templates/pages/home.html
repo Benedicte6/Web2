@@ -19,11 +19,27 @@
         les nouvelles technologies, les réglementations et les événements clés dans le domaine de l'agronomie.</p>
     </header>
 
+    <main>
+        <p>
+            <em>Welcome {% if user.is_authenticated %}{{ user.username }}{% endif %}!</em>
+        </p>
+    
+        {% if user.is_authenticated %}
+            <a class="btn" href="{% url 'accounts:profile' %}">View Profile</a>
+        {% else %}
+        <a href="{% url 'login' %}">
+            <button>Login</button>
+        </a>    
+        {% endif %}
+    </main>
+        
+
+    <article>
     <div>
         <img src="{% static 'pages/img/accueil3.jpg' %}">
         <img src="{% static 'pages/img/accueil1.jpg' %}">
         <img src="{% static 'pages/img/accueil2.jpg' %}">
     </div>
-     
+    </article> 
     
     {% endblock %}

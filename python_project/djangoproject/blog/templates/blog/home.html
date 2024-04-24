@@ -21,10 +21,15 @@
             </a>
             {% endfor %}
         </ul>
+        
 
-        <!-- <a href="{% url 'blog:post-add' %}">Create a New Post</a> -->
-        <a href="{% url 'blog:post-add' %}">
-            <button>Add a New one</button>
-        </a>
+        {% if perms.blog.add_blogpost %}
+        <p>
+            <a href="{% url 'blog:post-add' %}">
+                <button>Add a New one</button>
+            </a>
+        </p>
+        {% endif %}
+
 
 {% endblock %}

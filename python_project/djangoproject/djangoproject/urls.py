@@ -18,8 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 # from pages import views as page_views #NEW
-# from django.conf import settings # NEW
-# from django.conf.urls.static import static # NEW
+from django.conf import settings # NEW
+from django.conf.urls.static import static # NEW
 
 
 urlpatterns = [
@@ -27,7 +27,12 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('', include('pages.urls')),
     
+    # Urls for account management
+    path('accounts/', include('accounts.urls')), # NEW
+    # NEW: path for account management
+    path('accounts/', include('django.contrib.auth.urls')),
+    
     path('admin/', admin.site.urls),
-]  #+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) # NEW
+]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) # NEW
 
 
