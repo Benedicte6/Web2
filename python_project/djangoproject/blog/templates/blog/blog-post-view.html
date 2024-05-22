@@ -3,8 +3,6 @@
 {% block 'title' %}{{ post.title }}{% endblock %}
 
 {% block 'content' %}
-
-    <a href="{% url 'blog:home' %}">Home</a>
     
     <h1>{{ post.title }}</h1>
     
@@ -12,6 +10,8 @@
     
     <p>{{ post.content }}</p>
     
-    <!-- <p><em>{{ post.num_views }} views</em></p> -->
+    {% if post.image %}
+    <img style="width:400px" src="{{ post.image.url }}">
+    {% endif %}
 
 {% endblock %}

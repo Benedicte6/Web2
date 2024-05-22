@@ -4,7 +4,6 @@
 
 {% block 'content' %}
 
-    <a href="{% url 'blog:home' %}">Home</a>
     <h1>Delete Post: {{ post.title }}</h1>
     <form action="{% url 'blog:post-delete' post.id %}" method="post">
         {% csrf_token %}

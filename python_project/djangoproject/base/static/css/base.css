@@ -30,7 +30,6 @@ nav ul li a {
     padding: 10px 20px;
 }
 
-
 main {
     padding: 20px;
 }
@@ -72,7 +71,6 @@ li {
 }
 
 img {
-    max-width: 100%;
     height: auto;
     width: auto;
     display: inline-block;
@@ -84,7 +82,7 @@ img {
 section {
     margin: 20px;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #20df1a;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
@@ -103,10 +101,23 @@ button, input[type="button"], input[type="submit"] {
     border-radius: 5px;
     
 }
+.links {
+    text-align: center; /* Aligner les éléments vers la droite de la page */
+    margin-top: 20px; /* Marge en haut pour séparer du titre */
+}
 
+.links a {
+    margin: 0 0px; /* Marge autour de chaque lien pour l'espace */
+    text-decoration: none; /* Enlever la décoration du lien */
+    color: #333; /* Couleur du texte des liens */
+}
 
-
-
-
-
+.links a:hover {
+    color: #555; /* Couleur du texte des liens au survol */
+}
+.general {
+    display: inline;
+    flex-direction: column;
+    align-items: center;  /* Centrer les éléments horizontalement */
+}
 

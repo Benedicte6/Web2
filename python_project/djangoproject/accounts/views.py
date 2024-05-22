@@ -45,6 +45,3 @@ def change_profile(request):
         form = UserChangeForm(instance=request.user)
 
     return render(request, 'registration/change_profile.html', { 'form': form })
-
-
-    

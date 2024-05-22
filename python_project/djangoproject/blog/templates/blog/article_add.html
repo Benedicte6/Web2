@@ -1,0 +1,20 @@
+{% extends 'base_template.html' %}
+
+{% block 'title' %}Create a new Article{% endblock %}
+
+{% block 'content' %}
+<head>
+    <title>Create Article</title>
+</head>
+
+    <h1>Create Article</h1>
+    <form action="{% url 'blog:article_add' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <a href="{% url 'blog:article_list' %}">
+           <input type="submit" value="Submit">  
+        </a>
+       
+    </form>
+
+{% endblock %}

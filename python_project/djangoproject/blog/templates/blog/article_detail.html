@@ -1,0 +1,23 @@
+{% extends 'base_template.html' %}
+
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ article.title }}</h1>
+    <p>
+        {% if if user.is_authenticated and user.is_staff %}
+            <a href="{% url 'blog:article_change' article.id %}">Edit</a>
+            <a href="{% url 'blog:article_delete' article.id %}">Delete</a>
+        {% endif %}
+    </p>
+    <p>{{ article.title }}</p>
+    <p>{{ article.introduction }}</p>
+    <p>{{ article.technical_info }}</p>
+    <p>{{ article.practical_tips }}</p>
+    <p>{{ article.testimonials }}</p>
+    <img src="{{ article.infographic.url }}" alt="Infographic">
+    <a href="{{ article.links }}">{{ article.links }}</a>
+    <p>{{ article.conclusion }}</p>
+{% endblock %}

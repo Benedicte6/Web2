@@ -1,0 +1,24 @@
+
+
+{% block title %}Create Event{% endblock %}
+
+{% block content %}
+    <a href="{% url 'blog:event_list' %}">  </a>
+
+    <form action="{% url 'blog:create_event' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+            <input type="submit" value="Submit">
+    </form>
+ 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #48c422;
+            text-align: center;
+}
+    </style>
+{% endblock %}

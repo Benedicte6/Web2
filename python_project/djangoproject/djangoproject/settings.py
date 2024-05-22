@@ -14,6 +14,8 @@ from pathlib import Path
 
 from djangoproject.local_settings import *
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -83,7 +85,7 @@ DATABASES = {
     'default': {
         'ENGINE' : 'django.db.backends.mysql',
         'NAME' : 'agricultural_data',
-        'USER' : 'bb_admin',
+        'USER' : 'bbn_admin',
         'PASSWORD': 'Pass123',
         'HOST' : 'localhost',
         'PORT' : '3306',
@@ -128,13 +130,20 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #LOGOUT_REDIRECT_URL = 'pages:home'
-LOGIN_REDIRECT_URL = 'accounts:profile'
-LOGOUT_REDIRECT_URL = 'login'
+LOGIN_REDIRECT_URL = 'pages:home'
+LOGOUT_REDIRECT_URL = 'pages:home' 
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+

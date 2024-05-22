@@ -1,0 +1,12 @@
+{% extends 'base_template.html' %}
+{% block 'title' %}{% endblock %}
+
+{% block 'content' %}
+
+    <h1>Supprimer l'événement "{{ event.title }}"</h1>
+    <p>Êtes-vous sûr de vouloir supprimer cet événement?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Supprimer</button>
+    </form>
+{% endblock %}

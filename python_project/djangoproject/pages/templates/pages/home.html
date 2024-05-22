@@ -3,17 +3,7 @@
 {% block 'content' %}
 
     <header>
-        <nav>
-            <ul>
-                <li><a href="/">Accueil</a></li>
-                <li><a href="/Trends/">Agricultural Trends</a></li>
-                <li><a href="/best_pratices/">Best practices</a></li>
-                <li><a href="/new_technologies/">New technologies</a></li>
-                <li><a href="/key_events/">Key events</a></li>
-                <li><a href="/about/">About us</a></li>
-                <li><a href="/blog/">Voir nos produits agricoles</a></li>
-            </ul>
-        </nav>
+       
         <h1>Bienvenue sur Agricultural Information Platform</h1>
         <p>Obtenez les dernières informations sur les tendances agricoles, les meilleures pratiques,
         les nouvelles technologies, les réglementations et les événements clés dans le domaine de l'agronomie.</p>
@@ -21,7 +11,7 @@
 
     <main>
         <p>
-            <em>Welcome {% if user.is_authenticated %}{{ user.username }}{% endif %}!</em>
+            <em>{% if user.is_authenticated %}{{ user.username }}{% endif %}</em>
         </p>
     
         {% if user.is_authenticated %}
@@ -36,9 +26,9 @@
 
     <article>
     <div>
-        <img src="{% static 'pages/img/accueil3.jpg' %}">
-        <img src="{% static 'pages/img/accueil1.jpg' %}">
-        <img src="{% static 'pages/img/accueil2.jpg' %}">
+        <img src="{% static 'pages/img/images (12).jpg' %}">
+        <img src="{% static 'pages/img/images (14).jpg' %}">
+        <img src="{% static 'pages/img/images (8).jpg' %}">
     </div>
     </article> 
     

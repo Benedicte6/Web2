@@ -3,7 +3,6 @@ from django.urls import path
 
 from . import views
 
-
 app_name = 'blog'
 urlpatterns = [
     path('', views.home, name='home'),
@@ -13,5 +12,21 @@ urlpatterns = [
     path('post/<int:post_id>/change/', views.blog_post_change, name='post-change'),
     path('post/<int:post_id>/delete/', views.blog_post_delete, name='post-delete'),
     path('post/<int:post_id>/publish/', views.blog_post_publish, name='post-publish'),
+
+
+    path('articles/', views.article_list, name='article_list'),
+    path('articles/add/', views.article_add, name='article_add'),
+    path('articles/<int:article_id>/', views.article_detail, name='article_detail'),
+    path('articles/<int:article_id>/change/', views.article_change, name='article_change'),
+    path('articles/<int:article_id>/delete/', views.article_delete, name='article_delete'),
+
+
+
+
+    path('events/', views.event_list, name='event_list'),
+    path('events/<int:pk>/', views.event_detail, name='event_detail'),
+    path('events/new/', views.create_event, name='create_event'),
+    path('events/<int:pk>/update/', views.update_event, name='update_event'),
+    path('events/<int:pk>/delete/', views.delete_event, name='delete_event'),
 
 ]
