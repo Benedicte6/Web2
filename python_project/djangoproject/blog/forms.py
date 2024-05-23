@@ -11,7 +11,7 @@ class BlogPostForm(forms.ModelForm):
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = ['title','introduction','practical_tips','testimonials','infographic','links','conclusion']
+        fields = ['title','introduction','technical_info','practical_tips','testimonials','infographic','links','conclusion']
 
 class EventForm(forms.ModelForm):
     class Meta:

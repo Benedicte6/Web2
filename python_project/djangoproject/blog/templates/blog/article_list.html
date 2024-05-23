@@ -1,24 +1,19 @@
 {% extends 'base_template.html' %}
 
-{% block 'title' %}Article{% endblock %}
+{% block 'title' %}{% endblock %}
 
 {% block 'content' %}
 
-    <head>
-        <title>Article List</title>
-    </head>
+    <h1>Liste des Articles</h1>
 
-    <h1>Articles</h1>
+    <a href="{% url 'blog:article_add' %}"><button>Add a New Article </button></a>
     
     <ul>
         {% for article in articles %}
-            <li><a href="{% url 'blog:article_detail' article.id %}">{{ article.title }}</a></li>
-            <a href="{{ article.get_absolute_url }}"></a>
+            <li><a href="{% url 'blog:article_detail' article.pk %}">{{ article.title }}</a></li>
+       
+            <li><a href="{{ article.get_absolute_url }}"></a></li>
+    
         {% endfor %}
-        <p>
-            <a href="{% url 'blog:article_add' %}">
-                <button>Add a New Article </button>
-            </a>
-        </p>
     </ul>
 {% endblock %}

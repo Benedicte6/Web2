@@ -82,46 +82,6 @@ def blog_post_publish(request, post_id):
 # Redirect to the post's detail page
     return redirect(blog_post)
 
-def article_list(request):
-    articles = Article.objects.all()
-    return render(request, 'blog/article_list.html', {'articles': articles})
-
-def article_add(request):
-    if request.method == 'POST':
-        form = ArticleForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('blog:article_list')
-    else:
-        form = ArticleForm()
-    
-    return render(request, 'blog/article_add.html', {'form': form})
-
-def article_detail(request, article_id):
-    article = get_object_or_404(Article, id=article_id)
-    return render(request, 'blog/article_detail.html', {'article': article})
-
-def article_change(request, article_id):
-    article = get_object_or_404(Article, id=article_id)
-    
-    if request.method == 'POST':
-        form = ArticleForm(request.POST, request.FILES, instance=article)
-        if form.is_valid():
-            article=form.save()
-            return redirect('blog:article_detail', article_id=article.id)
-    else:
-        form = ArticleForm(instance=article)
-    
-    return render(request, 'blog/article_change.html', {'form': form, 'article': article})
-
-def article_delete(request, article_id):
-    article = get_object_or_404(Article, id=article_id)
-    
-    if request.method == "POST":
-        article.delete()
-        return redirect('blog:article_list')
-    
-    return render(request, 'blog/article_delete.html', {'article': article })
 
 def event_list(request):
     events = Event.objects.all()
@@ -158,3 +118,40 @@ def delete_event(request, pk):
         event.delete()
         return redirect('blog:event_list')
     return render(request, 'blog/event_confirm_delete.html', {'event': event})
+
+
+def article_list(request):
+    articles = Article.objects.all()
+    return render(request, 'blog/article_list.html', {'articles': articles})
+
+def article_detail(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    return render(request, 'blog/article_detail.html', {'article': article})
+
+def article_add(request):
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('blog:article_list')
+    else:
+        form = ArticleForm()
+    return render(request, 'blog/article_form.html', {'form': form})
+
+def article_change(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES, instance=article)
+        if form.is_valid():
+            article=form.save()
+            return redirect('blog:article_detail', pk=pk)
+    else:
+        form = ArticleForm(instance=article)
+    return render(request, 'blog/article_change.html', {'form': form, 'article':article})
+
+def article_delete(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    if request.method == 'POST':
+        article.delete()
+        return redirect('blog:article_list')
+    return render(request, 'blog/article_delete.html', {'article': article})

@@ -75,11 +75,9 @@ class Article(models.Model):
         return self.title
 
 class Agronome(models.Model):
-    title = models.CharField(max_length=100)
-    content = models.TextField(blank=True)
+    name = models.CharField(max_length=100)
     email = models.EmailField(blank=True)
     specialisation = models.TextField(blank=True)
-    pub_date = models.DateField(null=True, blank=True)
     def __str__(self):
-        return self.title + ("*" if self.is_published else "") 
+        return self.name 
 
