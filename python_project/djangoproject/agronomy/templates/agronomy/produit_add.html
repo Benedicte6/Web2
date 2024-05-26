@@ -1,0 +1,12 @@
+{% extends 'base_template.html' %}
+
+{% block 'title' %}Create a new Produit{% endblock %}
+
+{% block 'content' %}
+    <form action="{% url 'agronomy:produit_add' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}

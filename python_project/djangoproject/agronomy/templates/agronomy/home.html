@@ -1,0 +1,42 @@
+{% extends 'base_template.html' %}
+
+{% block 'title' %}Agricultural plateform {% endblock %}
+
+{% block 'content' %}
+
+    <h1>Agricultural plateform information</h1>
+    <div class="general">
+        </ul>
+            <div style="display: inline;position: absolute;top: 50%; left: 50%;transform: translate(-50%,-50%);margin-top: 80px;">
+                {% for produit in produits %}
+                <div style="display: flex;">
+                <a href="{{ produit.get_absolute_url }}">
+                    <li>{{ produit.title }} (<em>{{ produit.pub_date }}</em>)</li>
+                    {% if produit.is_published %}
+                        <a href="{% url 'agronomy:produit_change' produit.id %}">
+                            <button>Edit</button>
+                        </a>
+                        <a href="{% url 'agronomy:produit_delete' produit.id %}">
+                            <button>Delete</button>
+                        </a>
+                {% endif %}
+                
+                </a>
+            </div>
+                {% endfor %}
+            </div>
+            
+            <div class="links">
+                {% if perms.blog.add_blogpost %}
+                <p>
+                    <a href="{% url 'agronomy:produit_add' %}">
+                        <button>Add a New one</button>
+                    </a>
+                </p>
+                
+                {% endif %}
+                <a href="{% url 'agronomy:article_list' %}">article</a>
+                <a href="{% url 'agronomy:event_list' %}">Events</a>
+            </div>
+    </div>
+{% endblock %}

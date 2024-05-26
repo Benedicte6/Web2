@@ -1,0 +1,32 @@
+{% extends 'base_template.html' %}
+
+{% block 'title' %}{{ produit.title }}{% endblock %}
+
+{% block 'content' %}
+   
+    <h1>{{ produit.title }}</h1>
+    <p>
+        {% if perms.agronomy.change_produit %}
+        <a href="{% url 'blog:produit_change' post.id %}"><button>Edit</button></a>
+        {% endif %}
+
+        {% if perms.agronomy.delete_produit %}
+        <a href="{% url 'blog:produit_delete' post.id %}"><button>Delete</button></a>
+        {% endif %}
+    </p>
+        {% if produit.is_published %}
+    <p>Published: <em>{{ produit.pub_date }}</em></p>
+
+    {% if produit.image %}
+    <img style="width:400px" src="{{ produit.image.url }}">
+    {% endif %}
+    
+
+    {% elif perms.agronomy.publish_produit %}
+        <form action="{% url 'agronomy:produit_publish' produit.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Publish">
+        </form>
+    {% endif %}
+    <p>{{ produit.content }}</p>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base_template.html' %}
+
+{% block title %}{{ event.title }}{% endblock %}
+
+{% block content %}
+
+
+
+    <h1>{{ event.title }}</h1>
+    <p><strong>Description:</strong> {{ event.description }}</p>
+    {% if event.image %}
+        <img src="{{ event.image.url }}" alt="Event Image" style="max-width: 100%;">
+    {% endif %}
+    <p><strong>Date de début:</strong> {{ event.start_date }}</p>
+    <p><strong>Date de fin:</strong> {{ event.end_date }}</p>
+    <p><strong>Lieu:</strong> {{ event.location }}</p>
+    <p><strong>Organisateur:</strong> {{ event.organizer }}</p>
+    <p><strong>Nombre de votes:</strong> {{ event.get_vote_count }}</p>
+    <p><strong>Contact:</strong> <a href="mailto:{{ event.contact_email }}">{{ event.contact_email }}</a></p>
+    {% if event.website %}
+        <p><strong>Site web:</strong> <a href="{{ event.website }}">{{ event.website }}</a></p>
+    {% endif %}
+
+{% endblock %}

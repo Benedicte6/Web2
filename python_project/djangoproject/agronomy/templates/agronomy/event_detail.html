@@ -1,0 +1,72 @@
+
+
+{% block title %} 
+
+{% endblock %}
+
+{% block content %}
+    <p>
+        <a href="{% url 'agronomy:event_list' %}">Events_list</a>
+    </p>
+    <h1>{{ event.title }}</h1>
+    <p><strong>Description:</strong> {{ event.description }}</p>
+    {% if event.image %}
+        <img style="width:400px" src="{{ event.image.url }}">
+    {% endif %}
+    <p><strong>Date de début:</strong> {{ event.start_date }}</p>
+    <p><strong>Date de fin:</strong> {{ event.end_date }}</p>
+    <p><strong>Lieu:</strong> {{ event.location }}</p>
+    <p><strong>Organisateur:</strong> {{ event.organizer }}</p>
+    <p><strong>Nombre de votes:</strong> {{ event.get_vote_count }}</p>
+    <p><strong>Contact:</strong> <a href="mailto:{{ event.contact_email }}">{{ event.contact_email }}</a></p>
+    {% if event.website %}
+        <p><strong>Site web:</strong> <a href="{{ event.website }}">{{ event.website }}</a></p>
+    {% endif %}
+
+    {% if user.is_authenticated and user.is_staff %}
+        
+        <a href="{% url 'agronomy:update_event' event.pk %}">Modifier</a>
+        <a href="{% url 'agronomy:delete_event' event.pk %}">Supprimer</a>
+    {% endif %}
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #48c422;
+            text-align: center;
+            align-items: normal;
+        }
+        button, input[type="button"], input[type="submit"] {
+            background-color: #2a6105;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 10px;
+            margin: 2px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+    <form method="post" action="{% url 'agronomy:vote_event' event.pk %}">
+        {% csrf_token %}
+        <button type="submit">Vote</button>
+    </form>
+
+    <form action="{% url 'agronomy:upload_event' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Télécharger l'événement</button>
+    </form>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

@@ -121,3 +121,19 @@ button, input[type="button"], input[type="submit"] {
     align-items: center;  /* Centrer les éléments horizontalement */
 }
 
+.messages {
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
+.info {
+    color: blue;
+}

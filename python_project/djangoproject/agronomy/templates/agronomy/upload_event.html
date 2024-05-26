@@ -1,0 +1,12 @@
+{% extends 'base_template.html' %}
+
+{% block 'title' %}{{ produit.title }}{% endblock %}
+
+{% block 'content' %}
+
+<form action="{% url 'agronomy:upload_event' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Télécharger l'événement</button>
+</form>
+{% endblock %}

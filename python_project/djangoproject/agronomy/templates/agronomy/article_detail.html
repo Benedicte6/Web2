@@ -1,0 +1,79 @@
+
+
+{% block title %}
+    
+{% endblock %}
+
+{% block content %}
+    <p>
+        <a href="{% url 'agronomy:article_list' %}">Articles_list</a>
+    </p>
+
+    {% if user.is_authenticated and user.is_staff %}
+        <a href="{% url 'agronomy:article_change' article.pk %}">Modifier</a>
+        <a href="{% url 'agronomy:article_delete' article.pk %}">Supprimer</a>
+    {% endif %}
+    
+    <h1>{{ article.title }}</h1>
+    <p><strong>Introduction:</strong> {{ article.introduction }}</p>
+    <p><strong>Informations techniques:</strong> {{ article.technical_info }}</p>
+    <p><strong>Conseils pratiques:</strong> {{ article.practical_tips }}</p>
+    <p><strong>Témoignages:</strong> {{ article.testimonials }}</p>
+    <p><strong>Auteur : </strong>{{ article.author }}</p>
+    {% if article.infographic %}
+        <img src="{{ article.infographic.url }}" alt="Infographic" style="width:400px">
+    {% endif %}
+    <p><strong>Liens:</strong> <a href="{{ article.links }}">{{ article.links }}</a></p>
+    <p><strong>Conclusion:</strong> {{ article.conclusion }}</p>
+    <p><strong>Nombre de votes:</strong> {{ article.get_vote_count }}</p>
+
+    <!-- Boutons de partage vers les plateformes de médias sociaux -->
+    <div class="social-share">
+        <a href="https://twitter.com/intent/tweet?url={{ article.get_absolute_url }}" target="_blank">Partager sur Twitter</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ article.get_absolute_url }}" target="_blank">Partager sur Facebook</a>
+    </div>
+
+   
+    <form method="post" action="{% url 'agronomy:vote_article' article.pk %}">
+        {% csrf_token %}
+        <button type="submit">Vote</button>
+    </form>
+
+    <form action="{% url 'agronomy:upload_article' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Télécharger l'article</button>
+    </form>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #48c422;
+            text-align: center;
+            align-items: normal;
+        }
+        button, input[type="button"], input[type="submit"] {
+            background-color: #2a6105;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 10px;
+            margin: 2px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+    </style>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base_template.html' %}
+
+{% block 'title' %}{{ produit.title }}{% endblock %}
+
+{% block 'content' %}
+    
+    <h1>{{ produit.title }}</h1>
+    
+    <p>Published: <em>{{ produit.pub_date }}</em></p>
+    
+    <p>{{ produit.content }}</p>
+    
+    {% if produit.image %}
+    <img style="width:400px" src="{{ produit.image.url }}">
+    {% endif %}
+
+{% endblock %}

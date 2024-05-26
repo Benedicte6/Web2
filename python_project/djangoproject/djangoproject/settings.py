@@ -35,7 +35,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'blog',
+    'agronomy',
     'base',
     'accounts',
     'pages',
@@ -83,13 +83,9 @@ WSGI_APPLICATION = 'djangoproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE' : 'django.db.backends.mysql',
-        'NAME' : 'agricultural_data',
-        'USER' : 'bbn_admin',
-        'PASSWORD': 'Pass123',
-        'HOST' : 'localhost',
-        'PORT' : '3306',
-    }
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': BASE_DIR / 'db.sqlite3',
+}
 }
 
 

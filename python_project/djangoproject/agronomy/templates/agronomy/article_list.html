@@ -1,0 +1,28 @@
+{% extends 'base_template.html' %}
+
+{% block 'title' %}{% endblock %}
+
+{% block 'content' %}
+
+    <h1>Liste des Articles</h1>
+
+    <a href="{% url 'agronomy:article_add' %}"><button>Add a New Article </button></a>
+    
+    <ul>
+        {% for article in articles %}
+            <li><a href="{% url 'agronomy:article_detail' article.pk %}">{{ article.title }}</a></li>
+       
+            <li><a href="{{ article.get_absolute_url }}"></a></li>
+    
+        {% endfor %}
+    </ul>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <td>{{ article.author }}</td>
+    
+{% endblock %}

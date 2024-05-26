@@ -1,0 +1,29 @@
+{% extends 'base_template.html' %}
+
+{% block 'title' %}Events{% endblock %}
+
+{% block 'content' %}
+
+    <h1>Événements</h1>
+
+     <!-- Ajouter un lien pour créer un nouvel événement -->
+     <a href="{% url 'agronomy:create_event' %}">Créer un événement</a>
+    
+    <ul>
+        {% for event in events %}
+            <li><a href="{% url 'agronomy:event_detail' event.pk %}">{{ event.title }}</a></li>
+       
+            <li><a href="{{ event.get_absolute_url }}"></a></li>
+    
+        {% endfor %}
+    </ul>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endblock %}
+

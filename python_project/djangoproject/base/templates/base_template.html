@@ -12,12 +12,12 @@
     <nav>
         <ul>
             <li><a href="/">Accueil</a></li>
-            <li><a href="/Trends/">Agricultural Trends</a></li>
-            <li><a href="/best_pratices/">Best practices</a></li>
-            <li><a href="/new_technologies/">New technologies</a></li>
-            <li><a href="/key_events/">Key events</a></li>
-            <li><a href="/about/">About us</a></li>
-            <li><a href="/blog/">Voir nos produits agricoles</a></li>
+            <li><a href="{% url 'pages:Trends' %}">Agricultural Trends</a></li>
+            <li><a href="{% url 'pages:practices' %}">Best practices</a></li>
+            <li><a href="{% url 'pages:technologies' %}">New technologies</a></li>
+            <li><a href="{% url 'pages:events' %}">Key events</a></li>
+            <li><a href="{% url 'pages:about' %}">About us</a></li>
+            <li><a href="/agronomy/">Voir nos produits agricoles</a></li>
         </ul>
     </nav>
 {% block 'content' %}
