@@ -6,12 +6,9 @@ from .models import Article
 from django.contrib.auth.decorators import permission_required, login_required
 from .models import Event
 from .forms import EventForm
-
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib import messages
-
-from .models import Article, Event, Comment
 from django.http import HttpResponse
 
 from .models import Vote
@@ -35,9 +32,10 @@ def vote(request, article_id=None, event_id=None):
                 messages.error(request, 'Vous avez déjà voté pour un événement!')
             return redirect('agronomy:event_list')
     return redirect('agronomy:home')
+
 @receiver(post_save, sender=Article)
 @receiver(post_save, sender=Event)
-@receiver(post_save, sender=Comment)
+
 
 def create_notification(sender, instance, created, **kwargs):
     if created:
@@ -127,7 +125,7 @@ def event_list(request):
 def event_view(request, event_id):
     event = Event.objects.get(id=event_id)
     data = {
-    'event': event
+        'event': event
     }
     return render(request, 'agronomy/event_view.html', data)
 
@@ -178,14 +176,12 @@ def article_list(request):
 
 def article_detail(request, pk):
     article = get_object_or_404(Article, pk=pk)
-    if request.method == 'POST':
-        form = ArticleForm(request.POST, request.FILES, instance=article)
-        if form.is_valid():
-            article=form.save()
-    else:
-        form = ArticleForm(instance=article)
+    data = {
+        'article': article
+        
+    }
     
-    return render(request, 'agronomy/article_detail.html', {'article': article, 'article_form': form})
+    return render(request, 'agronomy/article_detail.html',data)
 
 @login_required
 def article_add(request):

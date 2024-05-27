@@ -4,7 +4,6 @@ from django.utils import timezone
 from datetime import date
 
 
-
 # Create your models here.
 
 # class Person(models.Model):
@@ -14,16 +13,6 @@ from datetime import date
 
 User = settings.AUTH_USER_MODEL
 
-
-class Comment(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)  # Assurez-vous d'importer User si vous n'avez pas déjà fait
-    content = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    article = models.ForeignKey('agronomy.Article', on_delete=models.CASCADE)  # Assurez-vous d'importer Article si nécessaire
-
-    def __str__(self):
-        return f'Comment by {self.author.username} on {self.article.title}'
-    
 
 class Produits(models.Model):
     class Meta:
@@ -50,7 +39,6 @@ class Produits(models.Model):
 class Event(models.Model):
     title = models.CharField(max_length=255, default='Untitled Event')
     description = models.TextField(default='')
-    image = models.ImageField(upload_to='event_images/', null=True, blank=True)
     start_date = models.DateField(default=date.today)
     end_date = models.DateField(default=date(2024, 12, 31))
     location = models.CharField(max_length=255, default='TBD')
@@ -102,3 +90,9 @@ class Vote(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE, null=True)
     event = models.ForeignKey(Event, on_delete=models.CASCADE, null=True)
 
+class Comment(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)  
+    content = models.CharField(max_length=(500))
+    created_at = models.DateTimeField(auto_now_add=True)
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)

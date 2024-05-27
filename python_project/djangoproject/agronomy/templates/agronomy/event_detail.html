@@ -10,9 +10,6 @@
     </p>
     <h1>{{ event.title }}</h1>
     <p><strong>Description:</strong> {{ event.description }}</p>
-    {% if event.image %}
-        <img style="width:400px" src="{{ event.image.url }}">
-    {% endif %}
     <p><strong>Date de début:</strong> {{ event.start_date }}</p>
     <p><strong>Date de fin:</strong> {{ event.end_date }}</p>
     <p><strong>Lieu:</strong> {{ event.location }}</p>
@@ -55,6 +52,13 @@
         {% csrf_token %}
         <button type="submit">Vote</button>
     </form>
+
+    <!-- Boutons de partage vers les plateformes de médias sociaux -->
+    <div class="social-share">
+        <a href="https://twitter.com/intent/tweet?url={{ event.get_absolute_url }}" target="_blank">Partager sur Twitter</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ event.get_absolute_url }}" target="_blank">Partager sur Facebook</a>
+    </div>
+
 
     <form action="{% url 'agronomy:upload_event' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}

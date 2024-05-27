@@ -28,10 +28,12 @@ urlpatterns = [
     path('upload-article/', views.upload_article, name='upload_article'),
     path('upload-event/', views.upload_event, name='upload_event'),
 
+
     path('events/', views.event_list, name='event_list'),
     path('events/<int:pk>/', views.event_detail, name='event_detail'),
     path('events/new/', views.create_event, name='create_event'),
     path('events/<int:pk>/update/', views.update_event, name='update_event'),
     path('events/<int:pk>/delete/', views.delete_event, name='delete_event'),
+
 
 ]

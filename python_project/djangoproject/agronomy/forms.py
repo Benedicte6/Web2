@@ -1,6 +1,7 @@
 from django import forms
 from .models import Produits
 from .models import Article,Event
+
  
 class ProduitForm(forms.ModelForm):
     class Meta:
@@ -17,5 +18,7 @@ class EventForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = '__all__'
+
+
 
 

@@ -1,5 +1,9 @@
 
 
+<p>
+    <a href="{% url 'agronomy:article_list' %}">Articles_list</a>
+</p>
+
 {% block title %}Create a new Article{% endblock %}
 
 {% block content %}
@@ -18,5 +22,29 @@
         {% endfor %}
     </ul>
 {% endif %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #48c422;
+        text-align: center;
+        align-items: normal;
+    }
+    button, input[type="button"], input[type="submit"] {
+        background-color: #2a6105;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 10px;
+        margin: 2px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+</style>
 
 {% endblock %}
